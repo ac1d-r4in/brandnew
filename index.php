@@ -36,4 +36,4 @@ include BASEURI . '/Shablakov/Square.php';
 		Log::log($e->getMessage());
 	}
 
-MyLog::write();
+Log::write();
