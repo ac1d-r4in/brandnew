@@ -15,8 +15,8 @@ use Shablakov\Square;
 include BASEURI . '/core/EquationInterface.php';
 include BASEURI . '/core/LogInterface.php';
 include BASEURI . '/core/LogAbstract.php';
-include BASEURI . '/Shablakov/ShablakovException.php';
-include BASEURI . '/Shablakov/MyLog.php';
+include BASEURI . '/Shablakov/MyException.php';
+include BASEURI . '/Shablakov/Log.php';
 include BASEURI . '/Shablakov/Linear.php';
 include BASEURI . '/Shablakov/Square.php';
 
