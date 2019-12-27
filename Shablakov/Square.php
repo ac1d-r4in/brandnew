@@ -1,53 +1,35 @@
 <?php
 namespace Shablakov;
-
-use core\EquationInterface;
-use Shablakov\Linear;
-
-// Решение квадратного уравнения ax^2 + bx + c = 0
-class Square extends Linear implements EquationInterface {
-
-  public function __construct() {
-  }
-
-  protected function findDiscriminant($a, $b, $c) {
-	   return pow($b, 2) - 4 * $a * $c;
-  }
-
-  public function solve($a, $b, $c) {
-  	if($a == 0) {
-     Log::log("Entered koef a = 0, so it's linear equation");
-     $this->x = array($this->linearSolve($b, $c));
-     return $this->x[0];
-    }
-
-  	$this->eq = $a . "x^2 + " . $b . "x + " . $c . " = 0";
-    Log::log("Entered equation " . $this->eq . " is square");
-
-  	$disc = $this->findDiscriminant($a, $b, $c);
-    Log::log("D = " . $disc);
-
-	try {
-		if($disc < 0) {
-		  throw new MyException("This equation " . $this->eq . " has no roots");
-		}
-	} catch(MyException $ex) {
-		Log::log($ex->getMessage());
+class Square extends Linear implements \core\EquationInterface
+{
+	protected $x2;
+	protected function dir($a, $b, $c) 
+	{
+		return $b*$b - 4*$a*$c;
 	}
-
-  	if($disc > 0) {
-  	  array_push($this->x, (-1 * $b + sqrt($disc))/(2 * $a), (-1 * $b - sqrt($disc))/(2 * $a));
-      Log::log("This equation has 2 roots: " . $this->x[0] . ", " . $this->x[1] . "\n");
-  	}
-
-  	if($disc == 0) {
-  	  $this->x = (-1 * $b)/(2 * $a);
-      Log::log("This equation has 1 root: " . $this->x[0] . "\n");
-  	}
-
-  	return $this->x;
-  }
-
+	function solve($a, $b, $c) 
+	{
+		if($a == 0)
+		{
+		   return $this->linear($b,$c);
+		}
+		$dir = $this->dir($a, $b, $c);
+        Log::log("This is square equation");
+        Log::log("Equation: $a*x^2 + $b*x + $c = 0");
+		if ($dir > 0) 
+		{
+			$x = (-1*$b + sqrt($dir))/(2*$a);
+			$x2 = (-1*$b - sqrt($dir))/(2*$a);
+			$this->x = $x;
+			$this->x2 = $x2;
+			return array($x, $x2);
+		} 
+		elseif ($dir == 0) 
+		{
+			$x = (-1*$b)/(2*$a);
+			$this->x = $x;
+			return array($x);
+		}
+		throw new MyException("No roots");
+	}
 }
-
-?>

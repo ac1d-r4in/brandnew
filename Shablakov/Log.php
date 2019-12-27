@@ -1,23 +1,22 @@
 <?php
 namespace Shablakov;
-use core\LogAbstract;
-use core\LogInterface;
-Class Log extends LogAbstract implements LogInterface {
-	public static function write(){
-		return Log::Instance()->_write();
+use \DataTime;
+class Log extends \core\LogAbstract implements \core\LogInterface
+{
+	public static function log($str) 
+	{
+		self::Instance()->log[] = $str;
 	}
-	public static function log($str){
-		Log::Instance()->log[] = $str;
+	public function _write() 
+	{
+		echo implode("\n", $this->log) . "\n";
+		$d = new \DateTime();
+		if (!is_dir(__DIR__ . "/../Log/")) mkdir (__DIR__ . "/../Log/");
+		$name=__DIR__ . "/../Log/".$d->format("d.m.Y_H.i.s.u").".log";
+		file_put_contents($name, implode("\n\r", $this->log) . "\n\r");
 	}
-	
-	public function _write() {
-	
-		$d = new \DateTime("NOW");
-		$version = file_get_contents(__DIR__. "/../version");
-		if (!file_exists(__DIR__. "/../log")) { 
-			mkdir(__DIR__. "/../log", 0777, true);
-		}
-		file_put_contents(BASEURI . '/log/' . $d->format('d-m-Y__H__i_s_u') . '.log', "File Version: " . $version . "\r\n" . implode("\r\n", Log::Instance()->log));
-		echo implode("\r\n", Log::Instance()->log);
+	public static function write() 
+	{
+		static::Instance()->_write();
 	}
 }

@@ -1,7 +1,5 @@
 <?php
 namespace Shablakov;
-
-class MyException extends \RuntimeException {
-
+class MyException extends \RuntimeException 
+{
 }
-?>
