@@ -11,7 +11,7 @@ class Square extends Linear implements \core\EquationInterface
 	{
 		if($a == 0)
 		{
-		   return $this->linear($b,$c);
+		   return $this->linearSolve($b,$c);
 		}
 		$dir = $this->dir($a, $b, $c);
         Log::log("This is square equation");

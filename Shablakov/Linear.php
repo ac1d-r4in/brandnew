@@ -23,7 +23,7 @@ class Linear {
 	}
   	$this->eq = $k . "x + " . $b . " = 0";
     Log::log("Linear equation is entered " . $this->eq);
-  	$this->x = ($b * -1)/$k;
+  	$this->x[] = ($b * -1)/$k;
     Log::log("Equation root " . $this->x . "\n");
 
 	return $this->x;
