@@ -1,0 +1,45 @@
+{
+    "_readme": [
+        "This file locks the dependencies of your project to a known state",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
+        "This file is @generated automatically"
+    ],
+    "content-hash": "6ea2e319edbae6d4b2504c534a55c5ad",
+    "packages": [
+        {
+            "name": "Shablakov",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/ac1d-r4in/Shablakov.git",
+                "reference": "7a504c96857d2df7b8d7561a2474e2f12ca56757"
+            },
+            "require": {
+                "core": "1.0"
+            },
+            "type": "package",
+            "time": "2020-04-22T18:17:57+00:00"
+        },
+        {
+            "name": "core",
+            "version": "1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/rok9ru/trpo-core.git",
+                "reference": "master"
+            },
+            "type": "library"
+        }
+    ],
+    "packages-dev": [],
+    "aliases": [],
+    "minimum-stability": "stable",
+    "stability-flags": {
+        "shablakov": 20
+    },
+    "prefer-stable": false,
+    "prefer-lowest": false,
+    "platform": [],
+    "platform-dev": [],
+    "plugin-api-version": "1.1.0"
+}

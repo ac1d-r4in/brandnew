@@ -1,0 +1,27 @@
+{
+  "name": "trpo",
+  "repositories": [
+    {
+      "type": "git",
+      "url": "https://github.com/ac1d-r4in/Shablakov.git"
+    },
+    {
+      "type": "package",
+      "package": {
+        "name": "core",
+        "version": "1.0",
+        "source": {
+          "type": "git",
+          "url": "https://github.com/rok9ru/trpo-core.git",
+          "reference": "master"
+        }
+      }
+    }
+  ],
+  "require": {
+    "Shablakov": "@dev"
+  },
+  "config": {
+	"vendor-dir": "//"
+  }
+}
